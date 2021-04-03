@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +15,11 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        return 'index de empleados';
+        $users = User::where('status', 'Activo')->get();
+        //$users = User::all();
+        return view('employee',[
+            'users' => $users
+        ]);
     }
 
     /**
