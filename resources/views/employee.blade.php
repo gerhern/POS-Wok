@@ -19,13 +19,24 @@
                     </tr>
                     @foreach ($users as $user)
                     <tr class="text-center text-lg hover:bg-black hover:text-white">
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->privileges}}</td>
-                        <td>{{$user->salary}}</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->privileges }}</td>
+                        <td>{{ $user->salary }}</td>
                         <td>Seleccionar</td>
                         <td>Editar</td>
-                        <td>Eliminar</td>
+                        <td>
+                            <form action="{{ route('empleados.destroy', $user) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <input 
+                                type="submit"
+                                value="Eliminar"
+                                onclick="return confirm('Desea dar de baja a {{$user->name}}')"
+                                class="p-2 rounded-lg bg-red-600"
+                                >
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </table>

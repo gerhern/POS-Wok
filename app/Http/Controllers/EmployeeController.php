@@ -85,6 +85,10 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Hace un soft delete
+        $data = User::find($id);
+        $data->status = 'Inactivo';
+        $data->save();
+        return back();
     }
 }
