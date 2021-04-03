@@ -57,7 +57,7 @@
 
                 <label for="salary" class="w-full flex flex-col justify-center ">
                     <span class="text-xl font-extrabold">Salario Inicial</span>
-                    <input id = "salary" type="number" class=" font-semibold h-12 text-lg px-4 border-black border-2" name="salary"  autocomplete="salary" placeholder="Ej. 27.92" value="{{ old('salary') }}" required min="27" max="120">
+                    <input id = "salary" type="number" class=" font-semibold h-12 text-lg px-4 border-black border-2" name="salary"  autocomplete="salary" placeholder="Ej. 27.92" value="{{ old('salary') }}" required min="27" max="120" step="0.01">
                 </label>
                 
                 <input type="submit" value="Crear" class="text-lg border-black border-2 rounded-2xl px-8 bg-gray-100 my-4 ">

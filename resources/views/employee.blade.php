@@ -37,7 +37,6 @@
                         <th>Salario</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
-                        <th>&nbsp;</th>
                     </tr>
                     @foreach ($users as $user)
                     <tr class="text-center text-lg hover:bg-black hover:text-white">
@@ -45,8 +44,16 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->privileges }}</td>
                         <td>{{ $user->salary }}</td>
-                        <td>Seleccionar</td>
-                        <td>Editar</td>
+                        <td>
+                            <form action="{{ route('empleados.edit', $user) }}" method="GET">
+                            @csrf
+                            <input 
+                                type="submit"
+                                value="Editar"
+                                class="p-2 rounded-lg bg-blue-600 cursor-pointer"
+                                >
+                            </form>
+                        </td>
                         <td>
                             <form action="{{ route('empleados.destroy', $user) }}" method="POST">
                             @method('DELETE')
