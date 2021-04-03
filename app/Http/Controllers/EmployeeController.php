@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 
 class EmployeeController extends Controller
@@ -30,6 +31,7 @@ class EmployeeController extends Controller
     public function create()
     {
         //
+        return view('createEmployee');
     }
 
     /**
@@ -38,9 +40,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $userRequest)
     {
         //
+        dd($userRequest);
+        return 'llegaste a store';
     }
 
     /**

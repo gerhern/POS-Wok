@@ -2,7 +2,29 @@
 @section('content')
 
     <!--home-->
-    <div class="w-screen h-screen ">
+    <div class="w-screen h-screen flex flex-col ">
+        <!--botones adicionales-->
+
+        <a  href="{{ route('empleados.create') }}"
+            onclick="event.preventDefault();
+            document.getElementById('add-form').submit();"
+            class="text-blue-600 text-center text-2xl font-bold p-1 px-3 absolute m-4 border-2 border-blue-600 rounded-full">
+            Crear Empleado
+        </a>
+        <form id="add-form" action="{{ route('empleados.create') }}" method="GET">
+            @csrf
+        </form>
+
+        <a  href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();"
+            class="text-red-600 text-lg font-bold py-1 px-4 self-end absolute m-4 border-2 border-red-600 rounded-3xl">
+            Salir
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+             @csrf
+        </form>
+
         <h2 class="text-4xl text-center my-4">Lista de Empleados</h2>
 
         <!--tabla de empleados-->
@@ -33,7 +55,7 @@
                                 type="submit"
                                 value="Eliminar"
                                 onclick="return confirm('Desea dar de baja a {{$user->name}}')"
-                                class="p-2 rounded-lg bg-red-600"
+                                class="p-2 rounded-lg bg-red-600 cursor-pointer"
                                 >
                             </form>
                         </td>
