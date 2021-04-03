@@ -21,8 +21,14 @@ class DatabaseSeeder extends Seeder
             'privileges' => 'Admn',
             'salary' => '27.92',
             'status' => 'Activo'
+        ]);
 
-
+        User::create([
+            'name' => 'Jeremias',
+            'password' => bcrypt('00000000'),
+            'privileges' => 'User',
+            'salary' => '27.92',
+            'status' => 'Activo'
         ]);
 
         User::factory(30)->create();

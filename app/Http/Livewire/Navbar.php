@@ -8,15 +8,19 @@ class Navbar extends Component
 {
     public function render()
     {
-        $navData = $this->navigation(true);
+        
+        $user = auth()->user();
+        $navData = $this->navigation($user->privileges);
         
         return view('livewire.navbar',[
             'tabs'   => $navData['tabs'],
         ]);
     }
 
-    public function navigation($user){
-        if($user){
+    public function navigation($privileges){
+        
+
+        if($privileges == 'Admn'){
             $tabs =[
                 'Home'       => 'home',
                 'Ventas'     => 'ventas',
@@ -25,7 +29,7 @@ class Navbar extends Component
                 'Empleados'  => 'empleados',
                 'Provedores' => 'provedores'
             ];
-        }else{
+        }else if($privileges == 'User'){
             $tabs =[
                 'Home'       => 'home',
                 'Ventas'     => 'ventas',

@@ -8,16 +8,17 @@ class ModalContainer extends Component
 {
     public function render()
     {
-        $navData = $this->modals(true);
+        $user = auth()->user();
+        $navData = $this->modals($user->privileges);
         return view('livewire.modal-container', [
             'modals' => $navData['modals']
         ]);
     }
 
-    public function modals($user){
+    public function modals($privileges){
         //esta funcion retorna un array con 2 arrays dentro
         //1.-el arrat muestra el titulo del modal como clave y el texto de descripcion como valor
-        if($user){
+        if($privileges == 'Admn'){
             $modals =[
                 'Ventas'    => 'Realizar Ventas',
                 'Inventario'=> 'Gestionar inventario',
@@ -25,7 +26,7 @@ class ModalContainer extends Component
                 'Empleados' => 'Gestionar Altas/Bajas',
                 'Provedores'=> 'Gestionar Citas'
             ];
-        }else{
+        }else if($privileges == 'User'){
             $modals =[
                 'Ventas'    => 'Realizar Ventas',
                 'Horarios'  => 'Check-In/Check-Out',
