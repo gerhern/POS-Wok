@@ -66,4 +66,8 @@ class User extends Authenticatable
             return 'Vendedor';
         }
     }
+
+    public function Records(){
+        return $this->hasMany(TimeRecord::class);
+    }
 }

@@ -25,7 +25,7 @@ class Navbar extends Component
                 'Home'       => '/',
                 //'Ventas'     => 'ventas',
                 //'Inventario' => 'inventario',
-                //'Horarios'   => 'horarios',
+                'Horarios'   => 'horarios',
                 'Empleados'  => '/empleados',
                 //'Provedores' => 'provedores'
             ];
@@ -33,7 +33,7 @@ class Navbar extends Component
             $tabs =[
                 'Home'       => '/',
                 //'Ventas'     => 'ventas',
-                //'Horarios'   => 'horarios',
+                'Horarios'   => 'horarios',
                 //Provedores' => 'provedores'
             ];
         }
