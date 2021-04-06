@@ -58,4 +58,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getUserTypeAttribute($value){
+        if($this->privileges == 'Admn'){
+            return 'Administrador';
+        }else if($this->privileges == 'User'){
+            return 'Vendedor';
+        }
+    }
 }

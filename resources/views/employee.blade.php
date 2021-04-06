@@ -42,7 +42,7 @@
                     <tr class="text-center text-lg hover:bg-black hover:text-white">
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->privileges }}</td>
+                        <td>{{ $user->user_type }}</td>
                         <td>{{ $user->salary }}</td>
                         <td>
                             <form action="{{ route('empleados.edit', $user) }}" method="GET">
