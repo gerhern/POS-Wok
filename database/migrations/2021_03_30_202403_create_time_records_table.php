@@ -15,8 +15,11 @@ class CreateTimeRecordsTable extends Migration
     {
         Schema::create('time_records', function (Blueprint $table) {
             $table->id();
-            $table->date('checkin')->nullable();
-            $table->date('checkout')->nullable();
+            $table->date('day'); 
+            $table->time('checkin')->nullable();
+            $table->time('mealin')->nullable();
+            $table->time('mealout')->nullable();
+            $table->time('checkout')->nullable();
             
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

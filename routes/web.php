@@ -17,6 +17,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('home');
 })->name('home');
 
-Route::middleware(['auth:sanctum', 'isAdmin'])->resource('empleados', App\Http\Controllers\EmployeeController::class);
+Route::middleware(['auth:sanctum', 'isAdmin'])->resource('empleados', App\Http\Controllers\EmployeeController::class)->except([
+    'show']);
 
-Route::middleware(['auth:sanctum'])->resource('horarios', App\Http\Controllers\TimeRecordController::class);
+Route::middleware(['auth:sanctum'])->resource('horarios', App\Http\Controllers\TimeRecordController::class)->except([
+    'create',
+    'show',
+    'edit',
+    'update',
+    'destroy'
+    ]);

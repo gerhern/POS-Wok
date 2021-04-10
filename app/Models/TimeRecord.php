@@ -9,6 +9,12 @@ class TimeRecord extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'day',
+        'user_id',
+        'checkin'
+    ];
+
     public function User(){
         return $this->belongsTo(User::class);
     }

@@ -22,9 +22,12 @@ class TimeRecordFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'   => $this->faker->numberBetween(1,30),
-            'checkin'  => $this->faker->date(),
-            'checkout' => $this->faker->date(),
+            'user_id'  => $this->faker->numberBetween(1,30),
+            'day'      => $this->faker->date(), 
+            'checkin'  => $this->faker->time(),
+            'mealin'  => $this->faker->time(),
+            'mealout'  => $this->faker->time(),
+            'checkout' => $this->faker->time(),
         ];
     }
 }

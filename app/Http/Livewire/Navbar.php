@@ -22,19 +22,19 @@ class Navbar extends Component
 
         if($privileges == 'Admn'){
             $tabs =[
-                'Home'       => '/',
-                //'Ventas'     => 'ventas',
-                //'Inventario' => 'inventario',
-                'Horarios'   => 'horarios',
-                'Empleados'  => '/empleados',
-                //'Provedores' => 'provedores'
+                'Home'         => '/',
+                //'Ventas'     => '/ventas',
+                //'Inventario' => '/inventario',
+                'Horarios'     => '/horarios',
+                'Empleados'    => '/empleados',
+                //'Provedores' => '/provedores'
             ];
         }else if($privileges == 'User'){
             $tabs =[
-                'Home'       => '/',
-                //'Ventas'     => 'ventas',
-                'Horarios'   => 'horarios',
-                //Provedores' => 'provedores'
+                'Home'         => '/',
+                //'Ventas'     => '/ventas',
+                'Horarios'     => '/horarios',
+                //Provedores'  => '/provedores'
             ];
         }
         return $data = [
