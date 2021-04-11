@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         User::factory(30)->create();
         TimeRecord::factory(30)->create();
         Supplier::factory(5)->create();
-        Appointment::factory(5)->create();
+        Appointment::factory(50)->create();
         Item::factory(50)->create();
         Order::factory(5)->create();
         OrderItem::factory(5)->create();

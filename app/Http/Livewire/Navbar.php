@@ -27,14 +27,14 @@ class Navbar extends Component
                 //'Inventario' => '/inventario',
                 'Horarios'     => '/horarios',
                 'Empleados'    => '/empleados',
-                //'Provedores' => '/provedores'
+                'Proveedores'   => '/proveedores'
             ];
         }else if($privileges == 'User'){
             $tabs =[
                 'Home'         => '/',
                 //'Ventas'     => '/ventas',
                 'Horarios'     => '/horarios',
-                //Provedores'  => '/provedores'
+                'Proveedores'  => '/proveedores'
             ];
         }
         return $data = [

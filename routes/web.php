@@ -27,3 +27,5 @@ Route::middleware(['auth:sanctum'])->resource('horarios', App\Http\Controllers\T
     'update',
     'destroy'
     ]);
+
+    Route::middleware(['auth:sanctum'])->resource('proveedores', App\Http\Controllers\SupplierController::class)->except([]);
