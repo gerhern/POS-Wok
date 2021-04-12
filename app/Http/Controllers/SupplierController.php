@@ -15,12 +15,12 @@ class SupplierController extends Controller
     public function index()
     {
         $weekAppointments=[
-            'lastDays' => date("d-m-Y",strtotime(date("d-m-Y"). "- 7 days")),
-            'nextDays' => date("d-m-Y",strtotime(date("d-m-Y"). "+ 7 days")),
+            'lastDays' => date("Y-m-d",strtotime(date("Y-m-d"). "- 7 days")),
+            'nextDays' => date("Y-m-d",strtotime(date("Y-m-d"). "+ 7 days")),
         ];
 
         $areEmpty = [
-            'week' => Appointment::whereBetween('appointment_date',[$weekAppointments['lastDays'], $weekAppointments['nextDays']])
+            'week' => Appointment::whereBetween('date',[$weekAppointments['lastDays'], $weekAppointments['nextDays']])
                                 ->where('status' , 'Activo')
                                 ->get()
                                 ->isEmpty(),
@@ -31,29 +31,29 @@ class SupplierController extends Controller
                                 ->isEmpty(),
 
             'today' => Appointment::where('status' , 'Activo')
-                                ->where('appointment_date', date('Y-m-d'))
+                                ->where('date', date('Y-m-d'))
                                 ->latest()
                                 ->get()
                                 ->isEmpty()
         ];
 
         $appointments = [
-            'week' => Appointment::whereBetween('appointment_date',[$weekAppointments['lastDays'], $weekAppointments['nextDays']])
+            'week' => Appointment::whereBetween('date',[$weekAppointments['lastDays'], $weekAppointments['nextDays']])
                                 ->where('status' , 'Activo')
-                                ->get(),
+                                ->simplePaginate(8, ['*'], 'week'),
 
             'all' => Appointment::where('status' , 'Activo')
                                 ->latest()
-                                ->simplePaginate(8),
+                                ->simplePaginate(8, ['*'], 'all'),
 
             'today' => Appointment::where('status' , 'Activo')
-                                ->where('appointment_date', date('Y-m-d'))
+                                ->where('date', date('Y-m-d'))
                                 ->latest()
-                                ->get()
+                                ->simplePaginate(8, ['*'], 'today'),
         ];
-
-        //dd($areEmpty);
         
+        
+
         return view('supplier.supplierIndex', [
             'allAppointments' => $areEmpty['all']?null:$appointments['all'],
             'weekAppointments' => $areEmpty['week']?null:$appointments['week'],

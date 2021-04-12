@@ -12,70 +12,73 @@
 
         {{-- citas del dia de hoy --}}
         <div class="w-1/3 h-1/3  border border-blue-400">
-            <span class="bg-blue-200 px-2 absolute -mt-4 rounded-3xl">Hoy</span>
+            <span class="bg-blue-200 px-2 absolute -mt-4 -ml-px rounded-3xl">Hoy</span>
             <table class="w-4/5 h-4/5 mx-auto border border-black my-2 text-center">
-                 <tr class="text-xl bg-black text-white">
+                 <tr class="text-xl bg-black text-white h-5">
                      <th>Proveedor</th>
-                     <th>Cita</th>
+                     <th colspan="2">Cita</th>
                  </tr>
                  @if ($todayAppointments !=null)
-                    @foreach ($todaykAppointments as $app)
+                    @foreach ($todayAppointments as $app)
                         <tr class="text-md">
-                            <td>{{ $app->supplier_id }}</td>
-                            <td>{{ $app->appointment_date }}</td>
+                            <td>{{ $app->supplier->name }}</td>
+                            <td colspan="2">{{ $app->hour }}</td>
                         </tr>
                     @endforeach
                  @else
                         <tr>
-                            <td colspan="2" rowspan="5">No Hay Citas</td>
+                            <td colspan="3" rowspan="5">No Hay Citas</td>
                         </tr>
                  @endif
                  
             </table>
+            {{ $todayAppointments->links() }}
         </div>
 
         {{-- citas de la semana --}}
-        <div class="w-1/3 h-1/3  border border-blue-400">
-            <span class="bg-blue-200 px-2 absolute -mt-4 rounded-3xl">Esta semana</span>
+        <div class="w-1/3 h-1/3  border border-blue-400 ">
+            <span class="bg-blue-200 px-2 absolute -mt-4 -ml-px rounded-3xl">Esta semana</span>
             <table class="w-4/5 h-4/5 mx-auto border border-black my-2 text-center">
-                 <tr class="text-xl bg-black text-white">
+                 <tr class="text-xl bg-black text-white h-5">
                      <th>Proveedor</th>
-                     <th>Cita</th>
+                     <th colspan="2">Cita</th>
                  </tr>
                  @if ($weekAppointments !=null)
                     @foreach ($weekAppointments as $app)
                         <tr class="text-md">
-                            <td>{{ $app->supplier_id }}</td>
-                            <td>{{ $app->appointment_date }}</td>
+                            <td>{{ $app->supplier->name}}</td>
+                            <td>{{ $app->appointmentWeek }}</td>
+                            <td>{{ $app->hour }}</td>
                         </tr>
                     @endforeach
                  @else
                         <tr>
-                            <td colspan="2" rowspan="5">No Hay Citas</td>
+                            <td colspan="3" rowspan="5">No Hay Citas</td>
                         </tr>
                  @endif
                  
             </table>
+            {{ $weekAppointments->links() }}
         </div>
 
-        {{-- historico de citas (limitado a 50) --}}
+        {{-- historico de citas (limitado a 8) --}}
         <div class="w-1/3 h-1/3  border border-blue-400 ">
-            <span class="bg-blue-200 px-2 absolute -mt-4 rounded-3xl">Todas las citas</span>
+            <span class="bg-blue-200 px-2 absolute -mt-4 -ml-px rounded-3xl">Todas las citas</span>
            <table class="w-4/5 h-4/5 mx-auto border border-black my-2 text-center">
-                <tr class="text-xl bg-black text-white">
+                <tr class="text-xl bg-black text-white h-5">
                     <th>Proveedor</th>
-                    <th>Cita</th>
+                    <th colspan="2">Cita</th>
                 </tr>
                 @if ($allAppointments !=null)
                     @foreach ($allAppointments as $app)
                         <tr class="text-md">
-                            <td>{{ $app->supplier_id }}</td>
-                            <td>{{ $app->appointment_date }}</td>
+                            <td>{{ $app->supplier->name }}</td>
+                            <td colspan="2">{{ $app->appAll }}</td>
                         </tr>
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="2">No Hay Citas</td>
+                        <td colspan="3" rowspan="5">No Hay Citas</td>
                     </tr>
                 @endif
            </table>

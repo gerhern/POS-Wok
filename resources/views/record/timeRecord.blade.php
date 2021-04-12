@@ -19,7 +19,7 @@
             </tr>
             @foreach ($records as $record)
                 <tr class="text-center text-2xl">
-                    <td>{{ $record->day }}</td>
+                    <td>{{ $record->formatDate }}</td>
                     <td>{{ $record->checkin }}</td>
                     <td>{{ $record->mealout }}</td>
                     <td>{{ $record->mealin }}</td>

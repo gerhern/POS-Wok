@@ -23,7 +23,8 @@ class AppointmentFactory extends Factory
     {
         return [
             
-            'appointment_date' => $this->faker->date(),
+            'date'   => $this->faker->date(),
+            'hour'   => $this->faker->time(),
             'status' => $this->faker->randomElement(['Activo', 'Inactivo']),
             'supplier_id' => $this->faker->numberBetween(1,5)
         ];
