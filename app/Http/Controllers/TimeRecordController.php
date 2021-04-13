@@ -12,9 +12,14 @@ class TimeRecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+
+        /* 
+        --Vista del index de TimeRecord
+        --Este index envia el user para el nombre de usuario
+        --Envia tambien el historico de horarios de los ultimos 7 registros
+         */
+
         $user = User::find(auth()->user()->id);
         $records = TimeRecord::where('user_id', $user->id)->latest()->take(7)->get();
         return view('record.timeRecord',[
@@ -31,8 +36,16 @@ class TimeRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $record = TimeRecord::where('user_id', auth()->user()->id)->latest()->take(1)->get()->toArray();
+        /* 
+        --Busca si existe un registro en el dia de hoy, en caso de no existir, crea un registro
+        --en caso de existir revisa el ultimo check y agrega el mas reciente
+        --en caso de estar llenos los registros retorna un error
+        --Debido al problema de uso de colecciones lo envio como array
+         */
+        $record = TimeRecord::where('user_id', auth()->user()->id)
+                                ->where('day',date('Y-m-d'))
+                                ->first();
+
         $columns = ['mealout', 'mealin', 'checkout'];
 
         if($record == null){
@@ -41,22 +54,21 @@ class TimeRecordController extends Controller
             return back();
 
         }else{
-            $id = $record[0]['id'];
+            $id = $record['id'];
         }
 
         foreach($columns as $column){
             
-            if($record[0][$column] == null){
+            if($record[$column] == null){
 
                 $this->updateRecord($column, $id);
                 return back();
             }
         }
 
-        if($record[0]['checkout'] != null){
-
-            $this->createRecord();
-            return back();
+        if($record['checkout'] != null){
+            
+            return redirect('horarios')->with('error', 'Limite de registros alcanzados!!');
         }
     }
 

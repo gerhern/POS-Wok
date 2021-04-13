@@ -7,6 +7,12 @@
     
     <h2 class="text-4xl text-center my-4">Registros de {{ $user->name }}</h2>
 
+    @if (session('error'))
+        <div class="w-2/5 mx-auto text-red-600 p-4 bg-red-200 border border-red-600 my-4 text-xl text-center">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!--tabla de registros-->
     <div class="w-3/5 mx-auto ">
         <table class="w-full mb-20 border border-black" >
