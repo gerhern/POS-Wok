@@ -32,7 +32,9 @@
                  @endif
                  
             </table>
-            {{ $todayAppointments->links() }}
+            @if ($todayAppointments !=null)
+                {{ $todayAppointments->links() }}
+            @endif
         </div>
 
         {{-- citas de la semana --}}
@@ -58,7 +60,10 @@
                  @endif
                  
             </table>
-            {{ $weekAppointments->links() }}
+
+            @if ($weekAppointments !=null)
+                {{ $weekAppointments->links() }}
+            @endif
         </div>
 
         {{-- historico de citas (limitado a 8) --}}
@@ -82,7 +87,9 @@
                     </tr>
                 @endif
            </table>
-           {{ $allAppointments->links() }}
+           @if ($allAppointments !=null)
+                {{ $allAppointments->links() }}
+            @endif
         </div>
 
     </div>
