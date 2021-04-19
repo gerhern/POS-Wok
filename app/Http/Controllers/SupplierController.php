@@ -30,7 +30,7 @@ class SupplierController extends Controller
                                 ->simplePaginate(8)
                                 ->isEmpty(),
 
-            'today' => Appointment::where('status' , 'Activo')
+            'today' => Appointment::where('status' , '!=', 'Inactivo')
                                 ->where('date', date('Y-m-d'))
                                 ->latest()
                                 ->get()
@@ -46,10 +46,10 @@ class SupplierController extends Controller
                                 ->latest()
                                 ->simplePaginate(8, ['*'], 'all'),
 
-            'today' => Appointment::where('status' , 'Activo')
+            'today' => Appointment::where('status' , '!=', 'Inactivo')
                                 ->where('date', date('Y-m-d'))
                                 ->latest()
-                                ->simplePaginate(8, ['*'], 'today'),
+                                ->simplePaginate(10, ['*'], 'today'),
         ];
         
         
@@ -57,7 +57,8 @@ class SupplierController extends Controller
         return view('supplier.supplierIndex', [
             'allAppointments' => $areEmpty['all']?null:$appointments['all'],
             'weekAppointments' => $areEmpty['week']?null:$appointments['week'],
-            'todayAppointments' => $areEmpty['today']?null:$appointments['today']
+            'todayAppointments' => $areEmpty['today']?null:$appointments['today'],
+            'proveedor' => 'Proveedor'
         ]);
     }
 
@@ -69,6 +70,7 @@ class SupplierController extends Controller
     public function create()
     {
         //
+        return 'suppliers create view';
     }
 
     /**

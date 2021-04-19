@@ -29,3 +29,5 @@ Route::middleware(['auth:sanctum'])->resource('horarios', App\Http\Controllers\T
     ]);
 
     Route::middleware(['auth:sanctum'])->resource('proveedores', App\Http\Controllers\SupplierController::class)->except([]);
+    
+    Route::middleware(['auth:sanctum', 'isAdmin'])->resource('citas', App\Http\Controllers\AppointmentController::class)->except([]);

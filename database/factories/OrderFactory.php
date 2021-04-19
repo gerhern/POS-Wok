@@ -24,7 +24,7 @@ class OrderFactory extends Factory
         return [
 
             'order_quantity' => $this->faker->randomDigit,
-            'supplier_id'   => $this->faker->numberBetween(1, 5)
+            'appointment_id'   => $this->faker->numberBetween(1, 5)
         ];
     }
 }

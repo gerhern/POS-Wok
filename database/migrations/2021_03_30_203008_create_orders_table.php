@@ -17,9 +17,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('order_quantity');
 
-            $table->bigInteger('supplier_id')->unsigned();
+            $table->bigInteger('appointment_id')->unsigned();
             
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            $table->foreign('appointment_id')->references('id')->on('appointments');
             
             $table->timestamps();
         });
