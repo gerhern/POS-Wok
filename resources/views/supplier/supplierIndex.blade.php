@@ -41,7 +41,7 @@
                                     <td class="text-gray-400 font-semibold">Recibir</td>
                                 @endif
                                 <td>
-                                    <a href="{{ route('citas.show', $app->id) }}" class="font-bold border-2 border-black px-2 rounded hover:bg-black hover:text-white">
+                                    <a href="{{ route('citas.show', $app) }}" class="font-bold border-2 border-black px-2 rounded hover:bg-black hover:text-white">
                                     Ver
                                     </a>
                                 </td>
@@ -49,7 +49,7 @@
                         @endforeach
                     @else
                             <tr>
-                                <td colspan="5" rowspan="5" class="text-3xl">No Hay Citas</td>
+                                <td colspan="6" rowspan="5" class="text-3xl">No Hay Citas</td>
                             </tr>
                     @endif
                     
@@ -86,7 +86,7 @@
                     @endforeach
                  @else
                         <tr>
-                            <td colspan="3" rowspan="5">No Hay Citas</td>
+                            <td colspan="4" rowspan="5" class="text-3xl">No Hay Citas</td>
                         </tr>
                  @endif
                  
@@ -121,7 +121,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="3" rowspan="5">No Hay Citas</td>
+                        <td colspan="4" rowspan="5" class="text-3xl">No Hay Citas</td>
                     </tr>
                 @endif
            </table>

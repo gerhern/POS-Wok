@@ -11,6 +11,8 @@ class Appointment extends Model
     use HasFactory;
 
     //Relaciones de tablas
+    //Relacion de 1 a 1 con suppliers
+    //Relacion de 1 a 1 con appointment
 
     public function supplier(){
         return $this->belongsTo(Supplier::class, 'supplier_id');
@@ -38,15 +40,15 @@ class Appointment extends Model
     }
 
     public function getappointmentStatusAttribute(){
-        
-        $data = explode(':', $this->hour);
-        $hour = Carbon::createFromTime($data[0], $data[1], $data[2]);
+
+        $data = array_merge( explode('-', $this->date), explode(':', $this->hour));
+        $timestamp = Carbon::create($data[0], $data[1], $data[2], $data[3], $data[4], $data[5]);
 
         if($this->status == 'Recibido'){
             return 'Recibido';
         }
         
-        if(Carbon::now()->gt($hour->addMinutes(5))){
+        if(Carbon::now()->gt($timestamp->addMinutes(5))){
             return "Perdida";
         }else{
             return "Pendiente";

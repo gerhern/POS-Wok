@@ -44,9 +44,16 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function show(Appointment $appointment)
+    public function show( $id)
     {
-        //
+        //Vista de cita individual para su posible eliminacion, y/o reagendar+
+        $appointment = Appointment::find($id);
+        $itemOrder = $appointment->order->item;
+        return view('Appointments.showAppointment', [
+            'appointment' => $appointment,
+            'items'       => $itemOrder,
+            'total'       => 0
+        ]);
     }
 
     /**
