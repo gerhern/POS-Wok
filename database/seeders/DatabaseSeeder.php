@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jerry',
             'password' => bcrypt('12345678'),
             'privileges' => 'Admn',
+            'employee_number' => '30338',
             'salary' => '27.92',
             'status' => 'Activo'
         ]);
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jeremias',
             'password' => bcrypt('00000000'),
             'privileges' => 'User',
+            'employee_number' => '30747',
             'salary' => '27.92',
             'status' => 'Activo'
         ]);
